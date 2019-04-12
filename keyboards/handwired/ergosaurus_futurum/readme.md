@@ -1,4 +1,4 @@
-#Ergosaurus futurum
+# Ergosaurus futurum
 
 ![image](./build_info/kbd.jpg "Finished prototype build")
 
