@@ -10,12 +10,14 @@
 extern keymap_config_t keymap_config;
 
 #define _QWERTY 0
-#define _LOWER 1
-#define _RAISE 2
+#define _COLEMAK 1
+#define _LOWER 2
+#define _RAISE 3
 #define _ADJUST 16
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
+  COLEMAK,
   LOWER,
   RAISE,
   ADJUST,
@@ -61,6 +63,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_GRV,                 KC_LEAD, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_LGUI, \
                                    KC_LALT, KC_LOWR, KC_SPC,  KC_LSFT,                KC_LSFT, KC_ENT,  KC_RASE, KC_RALT \
   ), \
+  [_COLEMAK] = LAYOUT_ergosaurus( \
+                                                                                      KC_VOLD, KC_MUTE, KC_VOLU, \
+        KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_MINUS,               KC_EQL,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV,  \
+        KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_LBRC,                KC_RBRC, KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSLS, \
+        KC_BSPC, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                                     KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT, \
+        KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_GRV,                 KC_LEAD, KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_LGUI, \
+                                   KC_LALT, KC_LOWR, KC_SPC,  KC_LSFT,                KC_LSFT, KC_ENT,  KC_RASE, KC_RALT \
+  ), \
   [_LOWER] = LAYOUT_ergosaurus( \
                                                                                       KC_RHUD, KC_MUTE, KC_RHUI, \
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F11,                 KC_F12,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______, \
@@ -79,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), \
   [_ADJUST] = LAYOUT_ergosaurus( \
                                                                                       KC_RVAD, KC_MUTE, KC_RVAI, \
-        _______, _______, _______, _______, _______, _______, _______,                _______, _______, _______, _______, _______, _______, _______, \
+        _______, QWERTY,  COLEMAK, _______, _______, _______, _______,                _______, _______, _______, _______, _______, _______, _______, \
         _______, _______, _______, _______, _______, _______, _______,                _______, _______, _______, _______, _______, _______, _______, \
         _______, _______, _______, _______, _______, _______,                                  _______, _______, _______, _______, _______, _______, \
         _______, _______, _______, _______, _______, _______, _______,                _______, _______, _______, _______, _______, _______, _______, \
@@ -100,6 +110,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+      case COLEMAK:
+          if (record->event.pressed) {
+              persistent_default_layer_set(1UL<<_COLEMAK);
+          }
+          return false;
+          break;
     case LOWER:
       if (record->event.pressed) {
         layer_on(_LOWER);

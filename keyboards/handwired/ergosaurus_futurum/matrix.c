@@ -326,8 +326,6 @@ uint8_t _matrix_scan(void) {
 #if defined(DIRECT_PINS) || (DIODE_DIRECTION == COL2ROW)
     // Set row, read cols
     for (uint8_t current_row = 0; current_row < ROWS_PER_HAND; current_row++) {
-        matrix_row_t last_row_value = raw_matrix[current_row];
-
         if (current_row == 0) {
             changed |= _read_encoders(raw_matrix);
         } else {
