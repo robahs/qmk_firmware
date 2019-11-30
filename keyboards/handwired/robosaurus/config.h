@@ -19,19 +19,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define VENDOR_ID       0x1337
+#define VENDOR_ID       0xC0DE
 #define PRODUCT_ID      0xDEAD
 #define DEVICE_VER      0xBEEF
 #define MANUFACTURER    Kodosaurus
-#define PRODUCT         Orthosarus
-#define DESCRIPTION     custom ortho
+#define PRODUCT         Robosaurus
+#define DESCRIPTION     custom fancy keyboard
 
-#define MATRIX_ROWS 5
+#define MATRIX_ROWS 4
 #define MATRIX_COLS 12
 
-#define MATRIX_ROW_PINS { B7, D5, C7, F1, F0 }
-#define MATRIX_COL_PINS { D1, D0, D4, C6, D7, E6, B3, B1, F7, F6, F5, F4 }
+#define MATRIX_ROW_PINS {  B1, B3, B2, B6 }
+#define MATRIX_COL_PINS { D1, D0, D4, C6, D7, E6, B4, B5, F4, F5, F6, F7 }
 
 
-#define LEADER_TIMEOUT 700
+#define LEADER_TIMEOUT 300
 #endif

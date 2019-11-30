@@ -7,6 +7,7 @@ extern keymap_config_t keymap_config;
 #define _COLEMAK 1
 #define _LOWER 2
 #define _RAISE 3
+#define _FN 4
 #define _ADJUST 16
 
 enum custom_keycodes {
@@ -14,6 +15,7 @@ enum custom_keycodes {
   LOWER,
   RAISE,
   ADJUST,
+  FN
 };
 
 #define KC_ KC_TRNS
@@ -21,31 +23,46 @@ enum custom_keycodes {
 
 #define KC_LOWR LOWER
 #define KC_RASE RAISE
+#define KC_FN FN
 #define KC_RST RESET
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  [_QWERTY] = LAYOUT_orthosaurus( \
-    KC_GESC,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,           KC_6,     KC_7,     KC_8,     KC_9,    KC_0,    KC_DEL,    \
+  [_QWERTY] = LAYOUT_orthosaurusr2( \
     KC_TAB,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,           KC_Y,     KC_U,     KC_I,     KC_O,    KC_P,    KC_BSLS,   \
     KC_BSPC,   KC_A,     KC_S,     KC_D,     KC_F,     KC_G,           KC_H,     KC_J,     KC_K,     KC_L,    KC_SCLN, KC_QUOT,   \
     KC_LSFT,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,           KC_N,     KC_M,     KC_COMM,  KC_DOT,  KC_SLSH, KC_RSFT,   \
-    KC_LCTL,   KC_LGUI,  KC_LALT,  KC_LSFT,  KC_LOWR,  KC_SPC,         KC_ENT,   KC_RASE,  KC_RALT,  KC_LEAD, KC_NO,   KC_LGUI    \
+    KC_LCTL,   KC_LGUI,  KC_LALT,  KC_FN,    KC_LOWR,  KC_SPC,         KC_ENT,   KC_RASE,  KC_RALT,  KC_LEAD, KC_NO,   KC_LGUI,    \
+                                                       KC_LSFT,        KC_LSFT
   ), \
-  [_LOWER]  = LAYOUT_orthosaurus( \
-    _______,  _______,  _______,  _______,  _______,  _______,         _______,  _______,  _______,  _______, _______, _______,   \
+  [_LOWER]  = LAYOUT_orthosaurusr2( \
     KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,            KC_6,     KC_7,     KC_8,     KC_9,    KC_0,    KC_BSPACE, \
     KC_DEL,   KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,  KC_PERC,          KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_LPRN, KC_RPRN, _______,   \
     _______,  _______,  _______,  _______,  _______, _______,          _______,  _______,  _______,  _______, _______, _______,   \
-    _______,  _______,  _______,  _______,  KC_LOWR, _______,          _______,  KC_RASE,  _______,  _______, _______, _______   \
+    _______,  _______,  _______,  _______,  KC_LOWR, _______,          _______,  KC_RASE,  _______,  _______, _______, _______,   \
+                                                     _______,          _______   \
   ), \
-  [_RAISE]  = LAYOUT_orthosaurus( \
-    KC_F11,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,               KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F12, \
-    _______,  _______, _______, _______, _______, _______,             _______,  KC_MINS,  KC_EQL,   KC_LBRC,  KC_RBRC,  KC_PIPE, \
+  [_RAISE]  = LAYOUT_orthosaurusr2( \
+    KC_ESC ,  _______, _______, _______, _______, _______,             _______,  KC_MINS,  KC_EQL,   KC_LBRC,  KC_RBRC,  KC_PIPE, \
     _______,  KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,             KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  _______,  _______, \
     _______,  _______, _______, _______, _______, _______,             _______,  _______,  _______,  _______,  _______,  _______, \
-    _______,  _______, _______, _______, KC_LOWR, _______,             _______,  KC_RASE,  _______,  _______,  _______,  _______ \
+    _______,  _______, _______, _______, KC_LOWR, _______,             _______,  KC_RASE,  _______,  _______,  _______,  _______, \
+                                                  _______,             _______   \
+  ), \
+  [_FN]  = LAYOUT_orthosaurusr2( \
+    KC_F11,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,               KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F12, \
+    _______,  _______, _______, _______, _______, _______,             _______,  _______,  _______,  _______,  _______,  _______, \
+    _______,  _______, _______, _______, _______, _______,             _______,  _______,  _______,  _______,  _______,  _______, \
+    _______,  _______, _______, _______, _______, _______,             _______,  _______,  _______,  _______,  _______,  _______, \
+                                                  _______,             _______   \
+  ), \
+  [_ADJUST]  = LAYOUT_orthosaurusr2( \
+    _______,  _______, _______, _______, _______, _______,             _______,  _______,  _______,  _______,  _______,  _______, \
+    _______,  _______, _______, _______, _______, _______,             _______,  _______,  _______,  _______,  _______,  _______, \
+    _______,  _______, _______, _______, _______, _______,             _______,  _______,  _______,  _______,  _______,  _______, \
+    _______,  _______, _______, _______, _______, _______,             _______,  _______,  _______,  _______,  _______,  _______, \
+                                                  _______,             _______   \
   ), \
 };
 
@@ -90,6 +107,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+      case FN:
+          if (record->event.pressed) {
+              layer_on(_FN);
+          } else {
+              layer_off(_FN);
+          }
+          return false;
+          break;
   }
   return true;
 }
@@ -119,6 +144,15 @@ void matrix_scan_user(void) {
         }
         SEQ_TWO_KEYS(KC_G, KC_A) {
             SEND_STRING("git add -A");
+        }
+        SEQ_TWO_KEYS(KC_Y, KC_L) {
+            SEND_STRING("yarn lint --fix");
+        }
+        SEQ_TWO_KEYS(KC_Y, KC_T) {
+            SEND_STRING("yarn test");
+        }
+        SEQ_TWO_KEYS(KC_Y, KC_U) {
+            SEND_STRING("yarn upgrade-interactive");
         }
     }
 }
