@@ -16,5 +16,6 @@
 #define MATRIX_COL_PINS { D2, D1, D0, D3, D5, B5, F0, B6, C6, C7, F1, F4, F5 }
 
 
+#define LEADER_PER_KEY_TIMING
 #define LEADER_TIMEOUT 300
 #endif

@@ -114,8 +114,32 @@ void matrix_scan_user(void) {
         SEQ_TWO_KEYS(KC_G, KC_A) {
             SEND_STRING("git add -A");
         }
-        SEQ_TWO_KEYS(KC_Y, KC_U) {
-            SEND_STRING("yarn upgrade --interactive");
+
+        SEQ_THREE_KEYS(KC_G, KC_P, KC_U) {
+            SEND_STRING("git push --set-upstream origin ");
         }
+        SEQ_TWO_KEYS(KC_G, KC_P) {
+            SEND_STRING("git push");
+        }
+
+        SEQ_TWO_KEYS(KC_G, KC_F) {
+            SEND_STRING("git fetch --prune");
+        }
+
+        SEQ_THREE_KEYS(KC_Y, KC_U, KC_L) {
+            SEND_STRING("yarn upgrade-interactive --latest");
+        }
+        SEQ_TWO_KEYS(KC_Y, KC_U) {
+            SEND_STRING("yarn upgrade-interactive");
+        }
+
+        SEQ_THREE_KEYS(KC_Y, KC_L, KC_P) {
+            SEND_STRING("yarn lerna publish --conventional-commits");
+        }
+        SEQ_TWO_KEYS(KC_Y, KC_L) {
+            SEND_STRING("yarn lint --fix");
+        }
+
+
     }
 }
